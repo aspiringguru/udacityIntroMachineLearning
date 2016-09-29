@@ -122,7 +122,8 @@ print "after adding 'wordsToRemove' len(sw)=", len(sw)
 
 
 from sklearn.feature_extraction.text import TfidfVectorizer
-vectorizer = TfidfVectorizer(stop_words = sw, lowercase=True)
+vectorizer = TfidfVectorizer(stop_words = "english")
+#vectorizer = TfidfVectorizer(stop_words = sw, lowercase=True)
 #vectorizer = TfidfVectorizer(stop_words="english", lowercase=True)
 
 #NB lowercase : boolean, default True
