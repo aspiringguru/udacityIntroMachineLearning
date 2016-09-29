@@ -33,6 +33,7 @@ def parseOutText(f):
         #print("available languages =", " ".join(SnowballStemmer.languages))
         #stemmer = SnowballStemmer("english")
         stemmer = SnowballStemmer("english", ignore_stopwords=True)
+        #stemmer = SnowballStemmer("english")
         #print "type(stemmer)=", type(stemmer)
         #print "type(content)=", type(content)
         #print "type(text_string)=", type(text_string), "text_string=", text_string
@@ -45,6 +46,8 @@ def parseOutText(f):
             if len(myword)>0:
                 words += " "+stemmer.stem(myword)
         words = words.strip()#remove leading space.
+        words = words.rstrip()
+        words = words.lstrip()
 
         ### split the text string into individual words, stem each word,
         ### and append the stemmed word to words (make sure there's a single
