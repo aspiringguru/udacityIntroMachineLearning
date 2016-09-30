@@ -99,3 +99,17 @@ for importance in clf.feature_importances_:
 import matplotlib.pyplot as plt
 plt.scatter(X, Y)
 plt.show()
+
+
+"""
+results after using plot to show distribution of importances.
+
+selected cutoff point @ 0.015 to enable showing these outliers
+
+feature_num= 20865 importance= 0.0749500333111 feature= fyi
+feature_num= 31857 importance= 0.0263157894737 feature= pm
+feature_num= 35875 importance= 0.134028294862 feature= smith
+feature_num= 36327 importance= 0.764705882353 feature= sshacklensf
+
+still can't see how to get the same number as 'correct' solution.
+"""
