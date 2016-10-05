@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a194b29a-2d02-440a-94f3-f73becff49aa" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/evaluation/evaluate_poi_identifier_original.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/evaluation/evaluate_poi_identifier.py" afterPath="$PROJECT_DIR$/evaluation/evaluate_poi_identifier.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/validation/validate_poi.py" afterPath="$PROJECT_DIR$/validation/validate_poi.py" />
     </list>
     <ignored path="ud120-projects.iws" />
@@ -56,13 +59,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="validate_poi.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="validate_poi.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/validation/validate_poi.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="457">
-              <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+            <state relative-caret-position="204">
+              <caret line="12" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="evaluate_poi_identifier.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/evaluation/evaluate_poi_identifier.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="406">
+              <caret line="102" column="83" selection-start-line="102" selection-start-column="1" selection-end-line="102" selection-end-column="83" />
               <folding>
-                <element signature="e#232#253#0" expanded="true" />
+                <element signature="e#307#328#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -100,13 +113,14 @@
         <option value="$PROJECT_DIR$/decision_tree/classifyDT.py" />
         <option value="$PROJECT_DIR$/decision_tree/dt_author_id.py" />
         <option value="$PROJECT_DIR$/validation/validate_poi.py" />
+        <option value="$PROJECT_DIR$/evaluation/evaluate_poi_identifier.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
+    <option name="width" value="1924" />
     <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -177,7 +191,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tools" />
+              <option name="myItemId" value="feature_selection" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -191,7 +205,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="feature_selection" />
+              <option name="myItemId" value="evaluation" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -222,12 +236,13 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\2015\coding_projects\Udacity_Machine_Learning\lessons\Naive Bayes Mini-Project\github\udacityIntroMachineLearning\evaluation" />
       <recent name="D:\2015\coding_projects\Udacity_Machine_Learning\lessons\Naive Bayes Mini-Project\github\udacityIntroMachineLearning\validation" />
       <recent name="D:\2015\coding_projects\Udacity_Machine_Learning\lessons\Naive Bayes Mini-Project\github\udacityIntroMachineLearning\lessons\validation" />
       <recent name="D:\2015\coding_projects\Udacity_Machine_Learning\lessons\Naive Bayes Mini-Project\github\udacityIntroMachineLearning\feature_selection" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.validate_poi">
+  <component name="RunManager" selected="Python.evaluate_poi_identifier">
     <configuration default="false" name="eigenfaces_demo" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -262,23 +277,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="decisionTreeDemo2" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/validation" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="ud120-projects" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/validation/decisionTreeDemo2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="dt_author_id" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -309,6 +307,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="ud120-projects" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/decision_tree/classifyDT.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="evaluate_poi_identifier" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/evaluation" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="ud120-projects" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/evaluation/evaluate_poi_identifier.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -450,17 +465,17 @@
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.eigenfaces_demo" />
       <item index="1" class="java.lang.String" itemvalue="Python.validate_poi" />
-      <item index="2" class="java.lang.String" itemvalue="Python.decisionTreeDemo2" />
-      <item index="3" class="java.lang.String" itemvalue="Python.dt_author_id" />
-      <item index="4" class="java.lang.String" itemvalue="Python.classifyDT" />
+      <item index="2" class="java.lang.String" itemvalue="Python.dt_author_id" />
+      <item index="3" class="java.lang.String" itemvalue="Python.classifyDT" />
+      <item index="4" class="java.lang.String" itemvalue="Python.evaluate_poi_identifier" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.validate_poi" />
-        <item index="1" class="java.lang.String" itemvalue="Python.dt_author_id" />
-        <item index="2" class="java.lang.String" itemvalue="Python.classifyDT" />
-        <item index="3" class="java.lang.String" itemvalue="Python.eigenfaces_demo" />
-        <item index="4" class="java.lang.String" itemvalue="Python.decisionTreeDemo2" />
+        <item index="0" class="java.lang.String" itemvalue="Python.evaluate_poi_identifier" />
+        <item index="1" class="java.lang.String" itemvalue="Python.validate_poi" />
+        <item index="2" class="java.lang.String" itemvalue="Python.dt_author_id" />
+        <item index="3" class="java.lang.String" itemvalue="Python.classifyDT" />
+        <item index="4" class="java.lang.String" itemvalue="Python.eigenfaces_demo" />
       </list>
     </recent_temporary>
   </component>
@@ -481,15 +496,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1924" height="1056" extended-state="0" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24895833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2505241" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.397463" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.397463" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -572,9 +587,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding>
-            <element signature="e#232#253#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -602,9 +615,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding>
-            <element signature="e#232#253#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -869,12 +880,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/evaluation/evaluate_poi_identifier_original.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/validation/validate_poi.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+        <state relative-caret-position="204">
+          <caret line="12" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/evaluation/evaluate_poi_identifier.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="102" column="83" selection-start-line="102" selection-start-column="1" selection-end-line="102" selection-end-column="83" />
           <folding>
-            <element signature="e#232#253#0" expanded="true" />
+            <element signature="e#307#328#0" expanded="true" />
           </folding>
         </state>
       </provider>

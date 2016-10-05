@@ -28,7 +28,8 @@ data = featureFormat(data_dict, features_list)#original
 #
 
 labels, features = targetFeatureSplit(data)
-
+print "type(labels)=", type(labels), "len(labels)=", len(labels)
+print "type(features)=", type(features), "len(features)=", len(features)
 
 
 ### it's all yours from here forward!  
@@ -55,6 +56,7 @@ print ("acc=", acc)
 from sklearn.cross_validation import train_test_split
 
 
+#step1 : split the data into train/test.
 start_time = time()
 X_train, X_test, y_train, y_test = train_test_split(features, labels, test_size=0.3, random_state=42)
 print("--- time to train_test_split %s seconds ---" % (time() - start_time))
@@ -63,11 +65,12 @@ print "type(X_test)=", type(X_test), len(X_test)
 print "type(y_train)=", type(y_train), len(y_train)
 print "type(y_test)=", type(y_test), len(y_test)
 
+#step 2 : fit the classigied with the training data
 start_time = time()
 clf = clf.fit(X_train, y_train)
 print("--- time to clf.fit %s seconds ---" % (time() - start_time))
 
-
+#step 3: test the accuracy of the fitted classifier using the test data.
 acc =  clf.score(X_test, y_test)
 print ("acc=", acc)
 
