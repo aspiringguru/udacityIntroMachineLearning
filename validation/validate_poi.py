@@ -47,6 +47,7 @@ acc =  clf.score(features, labels)
 print("--- time to clf.score %s seconds ---" % (time() - start_time))
 
 print ("acc=", acc)
+#'acc=', 0.98947368421052628   accepted by grader
 
 #validation 18 of 18 Deploying a Training/Testing Regime
 #hold out 30% of the data for testing and set the random_state parameter to 42
@@ -62,5 +63,12 @@ print "type(X_test)=", type(X_test), len(X_test)
 print "type(y_train)=", type(y_train), len(y_train)
 print "type(y_test)=", type(y_test), len(y_test)
 
+start_time = time()
+clf = clf.fit(X_train, y_train)
+print("--- time to clf.fit %s seconds ---" % (time() - start_time))
+
+
 acc =  clf.score(X_test, y_test)
 print ("acc=", acc)
+
+#'acc=', 0.72413793103448276, accepted by grader.
