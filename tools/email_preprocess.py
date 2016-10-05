@@ -54,6 +54,10 @@ def preprocess(words_file = "../tools/word_data.pkl", authors_file="../tools/ema
     ### feature selection, because text is super high dimensional and 
     ### can be really computationally chewy as a result
     selector = SelectPercentile(f_classif, percentile=10)
+    # http://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectPercentile.html
+    # class sklearn.feature_selection.SelectPercentile(score_func=<function f_classif>, percentile=10)[source]
+    # Select features according to a percentile of the highest scores.
+
     selector.fit(features_train_transformed, labels_train)
     features_train_transformed = selector.transform(features_train_transformed).toarray()
     features_test_transformed  = selector.transform(features_test_transformed).toarray()

@@ -14,8 +14,6 @@ The dataset used in this example is a preprocessed excerpt of the
 
 """
 
-
-
 print __doc__
 
 from time import time
@@ -37,8 +35,10 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s %(message)s')
 
 ###############################################################################
 # Download the data, if not already on disk and load it as numpy arrays
-lfw_people = fetch_lfw_people(min_faces_per_person=70, resize=0.4)
-
+print "fetch_lfw_people....start"
+#lfw_people = fetch_lfw_people(min_faces_per_person=70, resize=0.4)#original
+lfw_people = fetch_lfw_people(min_faces_per_person=40, resize=0.4)
+print "fetch_lfw_people....end"
 # introspect the images arrays to find the shapes (for plotting)
 n_samples, h, w = lfw_people.images.shape
 np.random.seed(42)
@@ -92,6 +92,8 @@ param_grid = {
           'gamma': [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.1],
           }
 # for sklearn version 0.16 or prior, the class_weight parameter value is 'auto'
+# for scikit-learn version 0.17 or later, the expected argument string should be "balanced"
+# pip show scikit-learn to identify version.
 clf = GridSearchCV(SVC(kernel='rbf', class_weight='balanced'), param_grid)
 clf = clf.fit(X_train_pca, y_train)
 print "done in %0.3fs" % (time() - t0)

@@ -72,7 +72,7 @@ maxCount = 0
 print "__________________________"
 feature_num = 0
 for importance in clf.feature_importances_:
-	if importance >= 0.015:
+	if importance >= 0.2: #0.015:
 		print "feature_num=", feature_num, "importance=", importance, "feature=", vectorizer.get_feature_names()[feature_num]
 	feature_num += 1
 
@@ -112,4 +112,11 @@ feature_num= 35875 importance= 0.134028294862 feature= smith
 feature_num= 36327 importance= 0.764705882353 feature= sshacklensf
 
 still can't see how to get the same number as 'correct' solution.
+
+
+after returning to vectorize_text.py and adding sshacklensf to wordsToRemove.
+
+feature_num= 14774 importance= 0.666666666667 feature= cgermannsf
+
+
 """
