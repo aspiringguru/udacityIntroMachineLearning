@@ -32,6 +32,12 @@ print "type(features_train)=", type(features_train)
 print "type(features_test)=", type(features_test)
 print "type(labels_train)=", type(labels_train)
 print "type(labels_test)=", type(labels_test)
+print "len(labels_train)=", len(labels_train)
+print "len(labels_test)=", len(labels_test)
+print "labels_train=", labels_train
+print "labels_test=", labels_test
+print "\n"
+
 
 from sklearn.naive_bayes import GaussianNB
 print ("creating clf")

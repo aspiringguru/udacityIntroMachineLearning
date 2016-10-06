@@ -1,0 +1,71 @@
+“My identifier doesn’t have great _, but it does have good _.
+
+That means that, nearly every time a POI shows up in my test set,
+I am able to identify him or her.
+
+The cost of this is that I sometimes get some false positives, where non-POIs get flagged.”
+
+
+1.    Recall          Precision
+2.    precision       Recall       [correct answer]
+3.    F1 score        Recall
+4.    precision       F1 score
+
+Recall = sensitivity = true positive rate = When it's actually yes, how often does it predict yes =
+REcall = True Positive
+         -------------
+         actual yes
+
+If recall is high then high probability will predict True when the event is actually True.
+
+
+Precision: When it predicts yes, how often is it correct?
+Precision = True Positive
+            ---------------
+            predicted yes
+
+If precision is high, it is very likely True when predicted True.
+
+https://en.wikipedia.org/wiki/F1_score
+
+F1 score = 2 x precision x recall
+           --------------------------
+           precision + recall
+
+--------------------------------------------------------------------------------------------------------
+My identifier doesn’t have great _, but it does have good __.
+That means that whenever a POI gets flagged in my test set,
+I know with a lot of confidence that it’s very likely to be a real POI and not a false alarm.
+On the other hand, the price I pay for this is that I sometimes miss real POIs,
+since I’m effectively reluctant to pull the trigger on edge cases.”
+
+
+1.    Recall          Precision   [correct answer]
+2.    precision       Recall
+3.    F1 score        Recall
+4.    precision       F1 score
+
+--------------------------------------------------------------------------------------------------------
+“My identifier has a really great _.
+
+This is the best of both worlds.
+Both my false positive and false negative rates are _,
+which means that I can identify POI’s reliably and accurately.
+If my identifier finds a POI then the person is almost certainly a POI,
+and if the identifier does not flag someone, then they are almost certainly not a POI.”
+
+
+1. F1 Score             high
+2. Recall               low
+3. F1 Score             Low  [accepted answer]
+4. precision            low
+
+
+
+Recall = sensitivity = true positive rate = When it's actually yes, how often does it predict yes =
+Recall = True Positive
+         -------------
+         actual yes
+
+If recall is high then high probability will predict True when the event is actually True.
+
