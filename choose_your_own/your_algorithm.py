@@ -1,5 +1,13 @@
 #!/usr/bin/python
 
+"""
+naive Bayes : NB Decision Boundary in Python
+naive Bayes : GaussianNB Deployment on Terrain Data
+
+http://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html
+
+"""
+
 import matplotlib.pyplot as plt
 from prep_terrain_data import makeTerrainData
 from class_vis import prettyPicture
@@ -31,14 +39,18 @@ plt.show()
 ### your code here!  name your classifier object clf if you want the 
 ### visualization code (prettyPicture) to show you the decision boundary
 
+from sklearn.naive_bayes import GaussianNB
+clf = GaussianNB()
+clf.fit(features_train, labels_train)
+pred = clf.predict(features_test)
 
-
-
-
-
+from sklearn.metrics import accuracy_score
+accuracy = accuracy_score(pred, labels_test)#TODO
+print "accuracy=", accuracy
 
 
 try:
     prettyPicture(clf, features_test, labels_test)
+    output_image("test.png", "png", open("test.png", "rb").read())
 except NameError:
     pass

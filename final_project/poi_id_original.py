@@ -2,7 +2,6 @@
 
 import sys
 import pickle
-import numpy as np
 sys.path.append("../tools/")
 
 from feature_format import featureFormat, targetFeatureSplit
@@ -17,67 +16,8 @@ features_list = ['poi','salary'] # You will need to use more features
 with open("final_project_dataset.pkl", "r") as data_file:
     data_dict = pickle.load(data_file)
 
-
-#briefly explore content and structure
-print "type(data_dict)=", type(data_dict), "len(data_dict.keys())=", len(data_dict.keys())
-row_names = data_dict.keys()
-print "row_names=", row_names
-col_names = data_dict['METTS MARK'].keys()
-print "col_names =", col_names
-#now search for outliers across various columns.
-param = 'salary'
-maxParamValue = 0
-colData = []
-nanCount = 0
-for row in row_names:
-    temp = data_dict[row][param]
-    #if isinstance(temp, basestring):
-    #    nanCount += 1
-    #else:
-    if temp>maxParamValue: maxParamValue=temp
-    colData.append(temp)
-print "colData=", colData
-print "nanCount", nanCount, "# of numeric values = ", len(colData)
-print max(colData), min(colData)
-
-data_dict_Values = data_dict.values()
-print "data_dict.values()=", data_dict.values()
-print type(temp)
-data_dict_lists = []
-for values in data_dict_Values:
-    data_dict_lists.append(values.values())
-data_dict_nparray = np.array(data_dict_lists)
-print "col_names=", col_names
-print "type(data_dict_nparray)=", type(data_dict_nparray)
-print "data_dict_nparray.shape=", data_dict_nparray.shape
-print "data_dict_nparray.shape[0]=", data_dict_nparray.shape[0]
-print "data_dict_nparray=", data_dict_nparray
-print "---------------------------"
-#data_dict_nparray.dtype.names = col_names
-#print "data_dict_nparray[0][0]=", data_dict_nparray[0][0]
-#print "data_dict_nparray[0][1]=", data_dict_nparray[0][1]
-#print "data_dict_nparray[0][2]=", data_dict_nparray[0][2]
-print "---------------------------"
-print "data_dict_nparray.dtype.names=", data_dict_nparray.dtype.names
-#quikc simple plot to identify outliers
-import matplotlib.pyplot as plt
-temp = []
-for I in len(data_dict_nparray.shape[0]):
-    temp.append(data_dict_nparray[i][0])
-
-
-plt.plot(temp)
-plt.xlabel('Salary')
-plt.ylabel('name')
-plt.show()
-
-
-
-
 ### Task 2: Remove outliers
-
 ### Task 3: Create new feature(s)
-
 ### Store to my_dataset for easy export below.
 my_dataset = data_dict
 

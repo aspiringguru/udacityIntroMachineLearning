@@ -21,7 +21,7 @@ The purpose of this machine learning analyse is to demonstrate the ability and s
 
 ## Data
 
-The data available for analysis includes emails, financial information on each employees remuneration package and data covering the employees non-direct remuneration.
+The data available for analysis includes emails and financial information. The financial information includes data on each employees remuneration package, and non direct remuneration. Some of the field names provided are listed below.
 
 1. salary
 2. to_messages
@@ -42,6 +42,4 @@ The data available for analysis includes emails, financial information on each e
 17. email_address
 18. from_poi_to_this_person
 
-
-
-
+Other data considered is a list of known Persons of Interest (POI). This list was collated from court records and media reports of the fraud investigation. 
