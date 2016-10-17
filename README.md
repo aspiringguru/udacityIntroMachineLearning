@@ -62,9 +62,11 @@ Plotting and comparing columns identified a few persons with significantly highe
 'loan_advances' : PICKERING MARK R, FREVERT MARK A, LAY KENNETH L (only three non-zero values in this column)
 'from_messages' : KAMINSKI WINCENTY J
 'from_this_person_to_poi' : BECK SALLY W, KEAN STEVEN J, ,LAVORATO JOHN J, DELAINEY DAVID W
+'director_fees' : significent banding observed around 1M and at 0.4M. No obvious outliers.
+
+Several of these plots showed a very significent disparity between the shortlisted names and the rest. Current senior executive remuneration trends commonly result in remuneration packages including various forms of stock incentives. While these disparities are not indicative of the person being a POI in terms of the criminal issues, the recurrence of names known to be POI provides good reason to examine this data in more detail using statistical methods. Also of interest is the correlation between publically reported remuneration packages due to regulatory requirements and remuneration less visible to scrutiny via public financial reports.
 
 
-Several of these plots showed a very significent disparity between the shortlisted names and the rest. Current senior executive remuneration trends commonly result in teh remuneration packages including various forms of stock incentives. While these disparities are not indicative of the person being a POI in terms of the criminal issues, the recurrence of names known to be POI provides good reason to examine this data in more detail using statistical methods.
 
 
 
