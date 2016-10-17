@@ -51,9 +51,7 @@ The numerical data was sorted and plotted for quick visual interpretation. A com
 Plotting and comparing columns identified a few persons with significantly higher values than the 'normal' distribution, specifically a short list of names appeared in the majority of shortlisted top 10. 
 
 'salary' : 'FREVERT MARK A, LAY KENNETH L, SKILLING JEFFREY K
-
 'deferral_payments' : FREVERT MARK A
-
 'total_payments':  'LAY KENNETH L'.
 
 'exercised_stock_options' : 'HIRKO JOSEPH' and 'LAY KENNETH L'.
