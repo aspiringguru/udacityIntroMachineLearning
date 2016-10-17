@@ -26,22 +26,27 @@ col_names = data_dict['METTS MARK'].keys()
 print "col_names =", col_names
 print "# of rows = ", len(row_names), ", # of columns = ", len(col_names)
 
-myDF = pd.DataFrame(index=row_names, columns=col_names)
+#myDF = pd.DataFrame(index=col_names, columns=row_names)
+myDF = pd.DataFrame()
 print "#rows in dataframe = len(myDF.index)=", len(myDF.index)
-myDF.columns = col_names
+#myDF.columns = row_names
 print "-------------"
 print myDF.head(n=3)
 
 count = 0
 for row in row_names:
     count += 1
-    if count>3: break
+    #if count>3: break
     temp = data_dict[row]
     #print "type=", type(temp), "type(temp.values())=", type(temp.values()), "len(temp.values())=", \
     #    len(temp.values()), "len(col_names)=", len(col_names)
-    print "temp.values()=", temp.values()
-    df2 = pd.DataFrame(temp.values())
-    myDF.append(df2)
+    print "type(temp.values())=", type(temp.values()), "temp.values()=", temp.values()
+    df2 = pd.DataFrame({row : temp.values()}, index=col_names)
+    print "df2.shape=", df2.shape
+    print "df2=", df2
+    #myDF.append(df2)
+    myDF = pd.concat([myDF, df2])
 print "-------------"
-print myDF.head(n=3)
+#print myDF.tail(n=4)
+print myDF
 print "myDF.shape=", myDF.shape

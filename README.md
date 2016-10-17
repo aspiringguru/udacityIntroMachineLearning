@@ -43,3 +43,31 @@ The data available for analysis includes emails and financial information. The f
 18. from_poi_to_this_person
 
 Other data considered is a list of known Persons of Interest (POI). This list was collated from court records and media reports of the fraud investigation. 
+
+## Outliers
+
+The numerical data was sorted and plotted for quick visual interpretation. A common outlier across several data columns was the row 'TOTAL' and excluded from further analysis.
+
+Plotting and comparing columns identified a few persons with significantly higher values than the 'normal' distribution, specifically a short list of names appeared in the majority of shortlisted top 10. 
+
+'salary' : 'FREVERT MARK A, LAY KENNETH L, SKILLING JEFFREY K
+'deferral_payments' : FREVERT MARK A
+'total_payments':  'LAY KENNETH L'.
+'exercised_stock_options' : 'HIRKO JOSEPH' and 'LAY KENNETH L'.
+'bonus' : BELDEN TIMOTHY N, SKILLING JEFFREY K, LAY KENNETH L, LAVORATO JOHN J
+'restricted_stock' : WHITE JR THOMAS E, LAY KENNETH L
+'restricted_stock_deferred' : BHATNAGAR SANJAY
+'total_stock_value' : RICE KENNETH D, PAI LOU L, SKILLING JEFFREY K, HIRKO JOSEPH, LAY KENNETH L
+'expenses' : URQUHART JOHN A, MCCLELLAN GEORGE
+'loan_advances' : PICKERING MARK R, FREVERT MARK A, LAY KENNETH L (only three non-zero values in this column)
+'from_messages' : KAMINSKI WINCENTY J
+'from_this_person_to_poi' : BECK SALLY W, KEAN STEVEN J, ,LAVORATO JOHN J, DELAINEY DAVID W
+
+
+Several of these plots showed a very significent disparity between the shortlisted names and the rest. Current senior executive remuneration trends commonly result in teh remuneration packages including various forms of stock incentives. While these disparities are not indicative of the person being a POI in terms of the criminal issues, the recurrence of names known to be POI provides good reason to examine this data in more detail using statistical methods.
+
+
+
+
+
+
