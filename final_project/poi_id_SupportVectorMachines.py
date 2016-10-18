@@ -34,7 +34,8 @@ print "col_names =",col_names
 
 import numpy as np
 from sklearn.svm import SVC
-clf = SVC(kernel="linear")
+#clf = SVC(kernel="linear")
+clf = SVC(kernel="rbf")
 #arrange data from data_dict to X,Y where X,Y are np.array.
 #X = input variables (), Y = predicted variable. (poi)
 poiCol = []
@@ -103,12 +104,12 @@ for row in row_names:
     from_this_person_to_poi = data_dict[row]["from_this_person_to_poi"]
     if isinstance(from_this_person_to_poi, basestring):
         from_this_person_to_poi = 0
-    # = [salary, total_payments, exercised_stock_options]
+    #x = [salary, total_payments, exercised_stock_options]
     #x = [total_payments, exercised_stock_options]
     #x = [total_payments]
     #x=[salary]
-    x = [exercised_stock_options]
-    #x = [from_this_person_to_poi]
+    #x = [exercised_stock_options]
+    x = [from_this_person_to_poi]
     #x = [from_poi_to_this_person]
     X.append(x)
     Y.append(poi)
