@@ -36,11 +36,14 @@ The data available for analysis includes emails and financial information. The f
 11. expenses
 12. loan_advances
 13. from_messages
-14. director_fees
-15. deferred_income
-16. long_term_incentive
-17. email_address
-18. from_poi_to_this_person
+14. other
+15. from_this_person_to_poi
+16. poi
+17. director_fees
+18. deferred_income
+19. long_term_incentive
+20. email_address
+21. from_poi_to_this_person
 
 Other data considered is a list of known Persons of Interest (POI). This list was collated from court records and media reports of the fraud investigation. 
 
@@ -61,11 +64,35 @@ Plotting and comparing columns identified a few persons with significantly highe
 'expenses' : URQUHART JOHN A, MCCLELLAN GEORGE  
 'loan_advances' : PICKERING MARK R, FREVERT MARK A, LAY KENNETH L (only three non-zero values in this column)  
 'from_messages' : KAMINSKI WINCENTY J  
-'from_this_person_to_poi' : BECK SALLY W, KEAN STEVEN J, ,LAVORATO JOHN J, DELAINEY DAVID W  
+'from_this_person_to_poi' : BECK SALLY W, KEAN STEVEN J, LAVORATO JOHN J, DELAINEY DAVID W  
 'director_fees' : significent banding observed around 1M and at 0.4M. No obvious outliers.  
 
 
-Several of these plots showed a very significent disparity between the shortlisted names and the rest. Current senior executive remuneration trends commonly result in remuneration packages including various forms of stock incentives. While these disparities are not indicative of the person being a POI in terms of the criminal issues, the recurrence of names known to be POI provides good reason to examine this data in more detail using statistical methods. Also of interest is the correlation between publically reported remuneration packages due to regulatory requirements and remuneration less visible to scrutiny via public financial reports.
+Several of these plots showed a very significent disparity between the shortlisted names and general employees. Current senior executive remuneration trends commonly result in remuneration packages including various forms of stock incentives. While the disparities in forms of remuneration and total remuneration are not indicative of the person being a Person Of Interest (POI), the recurrence of names known to be POI provides good reason to examine this data in more detail using statistical methods. Also of interest is the correlation between publically reported remuneration packages due to regulatory requirements and remuneration less visible to scrutiny via public financial reports.
+
+## Algorythmic Analysis
+
+As a revision/warm up exercise, the Naive Bayes method was tested using various keys to identify which provided the highest accuracy. (poi_id_Naive_Bayes1.py)
+
+
+| keys	                                            | clf.score      |
+| ------------------------------------------------- |:--------------:|
+| salary, total_payments, exercised_stock_options   | 0.868965517241 |
+| total_payments, exercised_stock_options           | 0.875862068966 |
+| total_payments                                    | 0.868965517241 |
+| exercised_stock_options                           | 0.875862068966 |
+| from_poi_to_this_person                           | 0.862068965517 |
+| salary                                            | 0.875862068966 |
+| from_this_person_to_poi                           | 0.848275862069 |
+
+Interestingly, while several keys and combinations of keys provided accuracy in the range 86%-88%, none of these models demonstrated a significently higher accuracy than others. The key with the highest accuracy was salary.
+
+Three methods of analysis were considered for the project.
+- K nearest neighbours
+- Adaboost
+- Random Forest
+
+
 
 
 
