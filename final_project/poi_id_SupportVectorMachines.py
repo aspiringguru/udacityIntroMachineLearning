@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 from sklearn.cross_validation import train_test_split
 from sklearn.metrics import accuracy_score
+import time
 sys.path.append("../tools/")
 
 from pandas import *
@@ -32,8 +33,8 @@ print "col_names =",col_names
 #http://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html
 
 import numpy as np
-from sklearn.naive_bayes import GaussianNB
-clf = GaussianNB()
+from sklearn.svm import SVC
+clf = SVC(kernel="linear")
 #arrange data from data_dict to X,Y where X,Y are np.array.
 #X = input variables (), Y = predicted variable. (poi)
 poiCol = []
@@ -102,12 +103,12 @@ for row in row_names:
     from_this_person_to_poi = data_dict[row]["from_this_person_to_poi"]
     if isinstance(from_this_person_to_poi, basestring):
         from_this_person_to_poi = 0
-    #x = [salary, total_payments, exercised_stock_options]
+    # = [salary, total_payments, exercised_stock_options]
     #x = [total_payments, exercised_stock_options]
     #x = [total_payments]
     #x=[salary]
-    #x = [exercised_stock_options]
-    x = [from_this_person_to_poi]
+    x = [exercised_stock_options]
+    #x = [from_this_person_to_poi]
     #x = [from_poi_to_this_person]
     X.append(x)
     Y.append(poi)
@@ -116,12 +117,19 @@ print "len(Y)=", len(Y), "sum(Y)=", sum(Y), "1-sum(Y)/len(Y)=", 1-sum(Y)/(1.0*le
 a_train, a_test, b_train, b_test = train_test_split(X, Y, test_size=0.33, random_state=42)
 print "type(a_train)=", type(a_train), "len(a_train)=", len(a_train), "len(a_train[0])=", len(a_train[0])
 print "type(a_test)=", type(a_test), "len(a_test)=", len(a_test)
-print "type(b_train)=", type(b_train), "len(b_train)=", len(b_train), "sum(b_train)=", sum(b_train), "1-sum(b_train)/len(b_train)=", 1-sum(b_train)/(1.0*len(b_train))
+print "type(b_train)=", type(b_train), "len(b_train)=", len(b_train)\
+#print "len(b_train[0])=", len(b_train[0])
+print "sum(b_train)=", sum(b_train), "1-sum(b_train)/len(b_train)=", 1-sum(b_train)/(1.0*len(b_train))
 print "type(b_test)=", type(b_test), "len(b_test)=", len(b_test), "sum(b_test)=", sum(b_test), "1-sum(b_test)/len(b_test)=", 1-sum(b_test)/(1.0*len(b_test))
 
-
+print "clf.fitting"
+start_time = time.time()
 clf.fit(a_train, b_train)
+print("--- clf.fitting time = %s seconds ---" % (time.time() - start_time))
+print "clf.fitted, clf.predicting"
+start_time = time.time()
 b_pred = clf.predict(a_test)
+print("--- clf.predicting time = %s seconds ---" % (time.time() - start_time))
 print "b_test=", b_test
 print "b_pred=", b_pred
 print "accuracy_score=", accuracy_score(b_test, b_pred)
