@@ -72,31 +72,85 @@ Several of these plots showed a very significent disparity between the shortlist
 
 ## Algorythmic Analysis
 
-As a revision/warm up exercise, the Naive Bayes method was tested using various keys to identify which provided the highest accuracy. (poi_id_Naive_Bayes1.py)
+Various algorythmic methods were compared as a revision/warm up exercise.
+
+## Naive Bayes
+
+The Naive Bayes method was tested using various keys to identify which provided the highest accuracy. (poi_id_Naive_Bayes1.py)
 
 
-| keys	                                            | clf.score      |
-| ------------------------------------------------- |:--------------:|
-| salary, total_payments, exercised_stock_options   | 0.868965517241 |
-| total_payments, exercised_stock_options           | 0.875862068966 |
-| total_payments                                    | 0.868965517241 |
-| exercised_stock_options                           | 0.875862068966 |
-| from_poi_to_this_person                           | 0.862068965517 |
-| salary                                            | 0.875862068966 |
-| from_this_person_to_poi                           | 0.848275862069 |
+| keys	                                            | clf.score      | accuracy_score |
+| ------------------------------------------------- |:--------------:|:--------------:|
+| salary, total_payments, exercised_stock_options   | 0.845360824742 | 0.833333333333 |
+| total_payments, exercised_stock_options           | 0.845360824742 | 0.854166666667 |
+| total_payments                                    | 0.876288659794 | 0.833333333333 |
+| exercised_stock_options                           | 0.886597938144 | 0.875          |
+| from_poi_to_this_person                           | 0.886597938144 | 0.854166666667 |
+| salary                                            | 0.886597938144 | 0.833333333333 |
+| from_this_person_to_poi                           | 0.886597938144 | 0.854166666667 |
+nb: clf.score [clf.score(a_train, b_train)] compares the accuracy of predictions on training data.
+nbb: accuracy_score [accuracy_score(b_test, b_pred)] compares predicted values with known values on a test set.
 
-Interestingly, while several keys and combinations of keys provided accuracy in the range 86%-88%, none of these models demonstrated a significently higher accuracy than others. The key with the highest accuracy was salary.
+Interestingly, while several keys and combinations of keys provided accuracy in the range 83%-88%, none of these models demonstrated a significently higher accuracy than others. The key with the highest accuracy was salary. 
+
+An interesting observation can be drawn from the accuracy wrt emails sent to a poi and emails received from a poi, persons receiving emails from a poi were marginally more likely to be a poi themselve than persons sending emails to a poi. Given the small % difference this factor alone needs further analysis to confirm accuracy as a predictor. 
+
+## Support Vector Machines
+
+The Support Vector Machines method required careful choice of kernel method to achieve a useful result.
+Some limited experimentaiton with C values was conducted to optimise results.
+
+| keys	                                            | kernel method | clf.score      | accuracy_score | Fitting Time   | Predicting Time |
+| ------------------------------------------------- |:-------------:|:--------------:|:--------------:|:--------------:|:---------------:|
+| salary, total_payments, exercised_stock_options   | linear        | no result      | no result      | no result      | no result       |
+| total_payments, exercised_stock_options           | linear        | no result      | no result      | no result      | no result       |
+| total_payments                                    | linear        | no result      | no result      | no result      | no result       |
+| exercised_stock_options                           | linear        | no result      | no result      | no result      | no result       |
+| from_poi_to_this_person                           | linear        | 0.886597938144 | 0.854166666667 | 0.0            | 0.0             |
+| salary                                            | linear        | 0.876288659794 | 0.854166666667 | 0.0            | 0.0             |
+| from_this_person_to_poi                           | linear        | 0.886597938144 | 0.854166666667 | 0.0            | 0.0             |
+------------------------------------------------------------------------------------------------------------------------------------------
+C=1.0 (default value)
+| salary, total_payments, exercised_stock_options   | rbf           | 1.0            | 0.854166666667 | 0.001          | 0.0             |
+| total_payments, exercised_stock_options           | rbf           | 1.0            | 0.854166666667 | 0.0            | 0.0             |
+| total_payments                                    | rbf           | 1.0            | 0.854166666667 | 0.0            | 0.001           |
+| exercised_stock_options                           | rbf           | 0.958762886598 | 0.854166666667 | 0.0            | 0.0             |
+| from_poi_to_this_person                           | rbf           | 0.917525773196 | 0.854166666667 | 0.001          | 0.0             |
+| salary                                            | rbf           | 1.0            | 0.854166666667 | 0.001          | 0.0             |
+| from_this_person_to_poi                           | rbf           | 0.907216494845 | 0.854166666667 | 0.001          | 0.0             |
+C=10
+------------------------------------------------------------------------------------------------------------------------------------------
+| salary, total_payments, exercised_stock_options   | rbf           | 1.0            | 0.854166666667 | 0.0            | 0.0             |
+| total_payments, exercised_stock_options           | rbf           | 1.0            | 0.854166666667 | 0.0            | 0.0             |
+| total_payments                                    | rbf           | 1.0            | 0.854166666667 | 0.0            | 0.0             |
+| exercised_stock_options                           | rbf           | 0.958762886598 | 0.854166666667 | 0.0            | 0.0             |
+| from_poi_to_this_person                           | rbf           | 0.948453608247 | 0.8125         | 0.0            | 0.0             |
+| salary                                            | rbf           | 1.0            | 0.854166666667 | 0.0            | 0.0             |
+| from_this_person_to_poi                           | rbf           | 0.948453608247 | 0.791666666667 | 0.0            | 0.0             |
+
+NB: 'no result' = no solution found in a reasonable time given the dataset size. (cutoffs varied, typically min 3 minutes.)
+
+## Decision Trees
+
+| keys	                                            | clf.score      | accuracy_score | Fitting Time   | Predicting Time |
+| ------------------------------------------------- |:--------------:|:--------------:|:--------------:|:---------------:|
+| salary, total_payments, exercised_stock_options   | 1.0            | 0.854166666667 | 0.0            | 0.0             |
+| total_payments, exercised_stock_options           | 1.0            | 0.854166666667 | 0.0            | 0.0             |
+| total_payments                                    | 1.0            | 0.854166666667 | 0.0            | 0.0             |
+| exercised_stock_options                           | 0.958762886598 | 0.854166666667 | 0.0            | 0.0             |
+| from_poi_to_this_person                           | 0.948453608247 | 0.8125         | 0.0            | 0.0             |
+| salary                                            | 1.0            | 0.854166666667 | 0.0            | 0.0             |
+| from_this_person_to_poi                           | 0.948453608247 | 0.791666666667 | 0.0            | 0.0             |
+------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
 
 Three methods of analysis were considered for the project.
 - K nearest neighbours
 - Adaboost
 - Random Forest
-
-
-
-
-
-
 
 
 
