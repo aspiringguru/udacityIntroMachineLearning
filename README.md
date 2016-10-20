@@ -127,11 +127,15 @@ C=10
 | from_poi_to_this_person                           | rbf           | 0.948453608247 | 0.8125         | 0.0            | 0.0             |
 | salary                                            | rbf           | 1.0            | 0.854166666667 | 0.0            | 0.0             |
 | from_this_person_to_poi                           | rbf           | 0.948453608247 | 0.791666666667 | 0.0            | 0.0             |
+------------------------------------------------------------------------------------------------------------------------------------------
 
 NB: 'no result' = no solution found in a reasonable time given the dataset size. (cutoffs varied, typically min 3 minutes.)
 
 ## Decision Trees
 
+Configuring the DecisionTreeClassifier has the default option criterion='gini', the 'entropy' option was also evaluated. As expected the 'gini' option demonstrated tighter fitting when compared to 'entropy'.
+
+With DecisionTreeClassifier(criterion='gini')
 | keys	                                            | clf.score      | accuracy_score | Fitting Time   | Predicting Time |
 | ------------------------------------------------- |:--------------:|:--------------:|:--------------:|:---------------:|
 | salary, total_payments, exercised_stock_options   | 1.0            | 0.854166666667 | 0.0            | 0.0             |
@@ -141,16 +145,88 @@ NB: 'no result' = no solution found in a reasonable time given the dataset size.
 | from_poi_to_this_person                           | 0.948453608247 | 0.8125         | 0.0            | 0.0             |
 | salary                                            | 1.0            | 0.854166666667 | 0.0            | 0.0             |
 | from_this_person_to_poi                           | 0.948453608247 | 0.791666666667 | 0.0            | 0.0             |
-------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------
+
+With DecisionTreeClassifier(criterion='entropy') 
+| keys	                                            | clf.score      | accuracy_score | Fitting Time   | Predicting Time |
+| ------------------------------------------------- |:--------------:|:--------------:|:--------------:|:---------------:|
+| salary, total_payments, exercised_stock_options   | 1.0            | 0.8125         | 0.0            | 0.0             |
+| total_payments, exercised_stock_options           | 1.0            | 0.729166666667 | 0.0            | 0.0             |
+| total_payments                                    | 1.0            | 0.75           | 0.0            | 0.0             |
+| exercised_stock_options                           | 0.958762886598 | 0.8125         | 0.0            | 0.0             |
+| from_poi_to_this_person                           | 0.948453608247 | 0.8125         | 0.0            | 0.0             |
+| salary                                            | 1.0            | 0.8125         | 0.0            | 0.0             |
+| from_this_person_to_poi                           | 0.948453608247 | 0.791666666667 | 0.0            | 0.0             |
+--------------------------------------------------------------------------------------------------------------------------
+
+With DecisionTreeClassifier(criterion='entropy', min_samples_split=8)
+NB: 'min_samples_split' is the minimum number of samples required to split an internal node.
+| keys	                                            | clf.score      | accuracy_score | Fitting Time   | Predicting Time |
+| ------------------------------------------------- |:--------------:|:--------------:|:--------------:|:---------------:|
+| salary, total_payments, exercised_stock_options   | 0.969072164948 | 0.729166666667 | 0.0            | 0.0             |
+| total_payments, exercised_stock_options           | 0.969072164948 | 0.645833333333 | 0.0            | 0.0             |
+| total_payments                                    | 0.927835051546 | 0.833333333333 | 0.0            | 0.0             |
+| exercised_stock_options                           | 0.948453608247 | 0.8125         | 0.0            | 0.0             |
+| from_poi_to_this_person                           | 0.917525773196 | 0.8125         | 0.0            | 0.0             |
+| salary                                            | 0.917525773196 | 0.854166666667 | 0.0            | 0.0             |
+| from_this_person_to_poi                           | 0.938144329897 | 0.791666666667 | 0.0            | 0.0             |
+--------------------------------------------------------------------------------------------------------------------------
 
 
-
-
+## New algorythmic methods
 
 Three methods of analysis were considered for the project.
 - K nearest neighbours
 - Adaboost
 - Random Forest
+
+## K nearest neighbours
+
+With KNeighborsClassifier(n_neighbors=3)
+
+| keys	                                            | clf.score      | accuracy_score | Fitting Time   | Predicting Time |
+| ------------------------------------------------- |:--------------:|:--------------:|:--------------:|:---------------:|
+| salary, total_payments, exercised_stock_options   | 0.907216494845 | 0.875          | 0.0            | 0.0             |
+| total_payments, exercised_stock_options           | 0.917525773196 | 0.875          | 0.0            | 0.0             |
+| total_payments                                    | 0.886597938144 | 0.854166666667 | 0.0            | 0.0             |
+| exercised_stock_options                           | 0.907216494845 | 0.875          | 0.0            | 0.0             |
+| from_poi_to_this_person                           | 0.886597938144 | 0.833333333333 | 0.0            | 0.0             |
+| salary                                            | 0.886597938144 | 0.875          | 0.0            | 0.0             |
+| from_this_person_to_poi                           | 0.876288659794 | 0.791666666667 | 0.0            | 0.0             |
+--------------------------------------------------------------------------------------------------------------------------
+
+With KNeighborsClassifier(n_neighbors=6)
+
+| keys	                                            | clf.score      | accuracy_score | Fitting Time   | Predicting Time |
+| ------------------------------------------------- |:--------------:|:--------------:|:--------------:|:---------------:|
+| salary, total_payments, exercised_stock_options   | 0.886597938144 | 0.854166666667 | 0.0            | 0.0             |
+| total_payments, exercised_stock_options           | 0.886597938144 | 0.854166666667 | 0.0            | 0.0             |
+| total_payments                                    | 0.886597938144 | 0.854166666667 | 0.0            | 0.0             |
+| exercised_stock_options                           | 0.886597938144 | 0.854166666667 | 0.0            | 0.0             |
+| from_poi_to_this_person                           | 0.886597938144 | 0.854166666667 | 0.0            | 0.0             |
+| salary                                            | 0.886597938144 | 0.854166666667 | 0.0            | 0.0             |
+| from_this_person_to_poi                           | 0.886597938144 | 0.854166666667 | 0.0            | 0.0             |
+--------------------------------------------------------------------------------------------------------------------------
+
+NB: clf.score & accuracy_score values are same for all parameters. This indicates the classifier uses an excessive value for n_neighbors.
+
+With KNeighborsClassifier(n_neighbors=4)
+
+| keys	                                            | clf.score      | accuracy_score | Fitting Time   | Predicting Time |
+| ------------------------------------------------- |:--------------:|:--------------:|:--------------:|:---------------:|
+| salary, total_payments, exercised_stock_options   | 0.886597938144 | 0.854166666667 | 0.0            | 0.0             |
+| total_payments, exercised_stock_options           | 0.886597938144 | 0.854166666667 | 0.0            | 0.0             |
+| total_payments                                    | 0.886597938144 | 0.854166666667 | 0.0            | 0.0             |
+| exercised_stock_options                           | 0.886597938144 | 0.854166666667 | 0.0            | 0.0             |
+| from_poi_to_this_person                           | 0.886597938144 | 0.854166666667 | 0.0            | 0.0             |
+| salary                                            | 0.886597938144 | 0.854166666667 | 0.0            | 0.0             |
+| from_this_person_to_poi                           | 0.886597938144 | 0.854166666667 | 0.0            | 0.0             |
+--------------------------------------------------------------------------------------------------------------------------
+
+NB: again, clf.score & accuracy_score values are same for all parameters. This indicates the classifier uses an excessive value for n_neighbors.
+
+
+
 
 
 

@@ -34,10 +34,9 @@ print "col_names =",col_names
 #http://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html
 
 import numpy as np
-from sklearn import tree
-#clf = tree.DecisionTreeClassifier()
-#clf = tree.DecisionTreeClassifier(criterion='entropy')
-clf = tree.DecisionTreeClassifier(criterion='entropy', min_samples_split=8)
+
+from sklearn.neighbors import KNeighborsClassifier
+clf = KNeighborsClassifier(n_neighbors=2)
 #arrange data from data_dict to X,Y where X,Y are np.array.
 #X = input variables (), Y = predicted variable. (poi)
 poiCol = []
@@ -112,7 +111,7 @@ for row in row_names:
     #x = [exercised_stock_options]
     #x = [from_poi_to_this_person]
     #x=[salary]
-    #x = [from_this_person_to_poi]
+    x = [from_this_person_to_poi]
     X.append(x)
     Y.append(poi)
 print "Y=", Y
@@ -131,6 +130,7 @@ clf.fit(a_train, b_train)
 print("--- clf.fitting time = %s seconds ---" % (time.time() - start_time))
 print "clf.fitted, clf.predicting"
 start_time = time.time()
+clf.predict(a_test)
 b_pred = clf.predict(a_test)
 print("--- clf.predicting time = %s seconds ---" % (time.time() - start_time))
 print "b_test=", b_test

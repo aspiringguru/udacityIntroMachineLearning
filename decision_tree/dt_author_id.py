@@ -35,7 +35,8 @@ print ("len(features_train[0])=", len(features_train[0]))
 # It will probably take a while to train.
 # Whats the accuracy?
 from sklearn import tree
-clf = tree.DecisionTreeClassifier()
+#clf = tree.DecisionTreeClassifier()#original
+clf = tree.DecisionTreeClassifier(min_samples_split=40)
 start_time = time()
 clf = clf.fit(features_train, labels_train)
 print("--- time to clf.fit %s seconds ---" % (time() - start_time))
@@ -48,3 +49,10 @@ print ("acc from tree.DecisionTreeClassifier = ", acc)
 #########################################################
 
 
+#when min_samples_split=40
+# & selector = SelectPercentile(f_classif, percentile=1)
+# time to clf.fit 3.39199995995 seconds & clf.score = 0.967
+
+#when min_samples_split=40
+# & selector = SelectPercentile(f_classif, percentile=10)
+# time to clf.fit 48 seconds, clf.score 0.015 & clf.score = 0.9772
