@@ -20,12 +20,17 @@ import matplotlib.pyplot as plt
 features_list = ['poi','salary'] # You will need to use more features
 
 ### Load the dictionary containing the dataset
+start_time = time.time()
 with open("final_project_dataset.pkl", "r") as data_file:
     data_dict = pickle.load(data_file)
+print("--- time to load pickle = %s seconds ---" % (time.time() - start_time))
 # quick analysis shows 'TOTAL' is an outlier.
 del data_dict['TOTAL']
 row_names = data_dict.keys()
 col_names = data_dict['METTS MARK'].keys()
+#delete 'email_address' from list because we won't be using it.
+del col_names[col_names.index('email_address')]
+del col_names[col_names.index('poi')]
 print "col_names =",col_names
 
 #now analyse using Naive Bayes method
@@ -34,108 +39,132 @@ print "col_names =",col_names
 #
 
 import numpy as np
+import types
 
 from sklearn.neighbors import KNeighborsClassifier
 clf = KNeighborsClassifier(n_neighbors=2)
 #arrange data from data_dict to X,Y where X,Y are np.array.
 #X = input variables (), Y = predicted variable. (poi)
-poiCol = []
-salaryCol = []
-total_paymentsCol = []
-exercised_stock_optionsCol = []
+import pandas as pd
+df = pd.DataFrame()
+poi = []
 for row in row_names:
-    poi = data_dict[row]["poi"]
-    #NB: poi column is True/False
-    poiCol.append(poi)
-    #
-    salary = data_dict[row]["salary"]
-    #print "row=", row, "salary=", salary
-    if isinstance(salary, basestring):
-        # print "incompatible type"
-        salaryCol.append(0)
-    else:
-        salaryCol.append(salary)
-    #
-    total_payments = data_dict[row]["total_payments"]
-    if isinstance(total_payments, basestring):
-        # print "incompatible type"
-        total_paymentsCol.append(0)
-    else:
-        total_paymentsCol.append(total_payments)
-    exercised_stock_options = data_dict[row]["exercised_stock_options"]
-    if isinstance(exercised_stock_options, basestring):
-        # print "incompatible type"
-        exercised_stock_optionsCol.append(0)
-    else:
-        exercised_stock_optionsCol.append(exercised_stock_options)
+    rowDict = data_dict[row]
+    del rowDict['email_address']
+    #print type(rowDict['poi'])#bool
+    #print rowDict['poi'], type(rowDict['poi'])#type poit = bool
+    poi.append(rowDict['poi'])
+    del rowDict['poi']
+    #print "type(rowDict)=", type(rowDict)#<type 'dict'>
+    values = rowDict.values()
+    #print "type(values)=", type(values)#list
+    tempdict = {}
+    for i in range(len(values)):
+        if isinstance(values[i], basestring):
+            values[i] = np.nan
+            #need to think through how to handle NaN's
+        rowDict[col_names[i]] = values[i]
+    #print "values=", values
+    #now assign list values to dictionary
+    #print "\n @ row=", row, ", tempdict=", tempdict
+    df = df.append(rowDict, ignore_index=True)
+print "df.shape=", df.shape
+print df.head(5)
+print "poi=", poi
 
-#quick visual display for audit/verification purposes.
-print "poiCol=", poiCol
-print "salaryCol=", salaryCol
-print "total_paymentsCol=", total_paymentsCol
-print "exercised_stock_options=", exercised_stock_optionsCol
-print "------------"
-print "len(poiCol)=", len(poiCol)
-print "len(salaryCol)=", len(salaryCol)
-print "len(total_paymentsCol)=", len(total_paymentsCol)
-print "len(exercised_stock_optionsCol)=", len(exercised_stock_optionsCol)
-#NB: checked all these arrays are same length.
-#now construct numpy array X = ([list of points composed from columns of interest])
-# ie X= ([list of points composed from salaryCol, total_paymentsCol, exercised_stock_optionsCol])
-X = []
-Y = []
-for row in row_names:
-    poi = data_dict[row]["poi"]
-    if poi:
-        poi = 1
-    else:
-        poi = 0
-    salary = data_dict[row]["salary"]
-    if isinstance(salary, basestring):
-        salary = 0
-    total_payments = data_dict[row]["total_payments"]
-    if isinstance(total_payments, basestring):
-        total_payments = 0
-    exercised_stock_options = data_dict[row]["exercised_stock_options"]
-    if isinstance(exercised_stock_options, basestring):
-        exercised_stock_options = 0
-    from_poi_to_this_person = data_dict[row]["from_poi_to_this_person"]
-    if isinstance(from_poi_to_this_person, basestring):
-        from_poi_to_this_person = 0
-    from_this_person_to_poi = data_dict[row]["from_this_person_to_poi"]
-    if isinstance(from_this_person_to_poi, basestring):
-        from_this_person_to_poi = 0
-    #x = [salary, total_payments, exercised_stock_options]
-    #x = [total_payments, exercised_stock_options]
-    #x = [total_payments]
-    #x = [exercised_stock_options]
-    #x = [from_poi_to_this_person]
-    #x=[salary]
-    x = [from_this_person_to_poi]
-    X.append(x)
-    Y.append(poi)
-print "Y=", Y
-print "len(Y)=", len(Y), "sum(Y)=", sum(Y), "1-sum(Y)/len(Y)=", 1-sum(Y)/(1.0*len(Y))
-a_train, a_test, b_train, b_test = train_test_split(X, Y, test_size=0.33, random_state=42)
-print "type(a_train)=", type(a_train), "len(a_train)=", len(a_train), "len(a_train[0])=", len(a_train[0])
-print "type(a_test)=", type(a_test), "len(a_test)=", len(a_test)
-print "type(b_train)=", type(b_train), "len(b_train)=", len(b_train)\
-#print "len(b_train[0])=", len(b_train[0])
-print "sum(b_train)=", sum(b_train), "1-sum(b_train)/len(b_train)=", 1-sum(b_train)/(1.0*len(b_train))
-print "type(b_test)=", type(b_test), "len(b_test)=", len(b_test), "sum(b_test)=", sum(b_test), "1-sum(b_test)/len(b_test)=", 1-sum(b_test)/(1.0*len(b_test))
+print "are there any null values = ", df.isnull().values.any()  #True
+print "number of null values = ", df.isnull().sum().sum()       #1318
+df.fillna(0, inplace=True)
+#http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.fillna.html
+#inplace=True required to modify
+print "are there any null values = ", df.isnull().values.any()  #True
+print "number of null values = ", df.isnull().sum().sum()       #1318
 
-print "clf.fitting"
+#print "type(df['restricted_stock_deferred'])=", type(df['restricted_stock_deferred'])
+#print df['restricted_stock_deferred']
+#print df['restricted_stock_deferred'][0:5]
+#print type(df['restricted_stock_deferred'][0])
+
+#poi = {True:1, False:0}
+#NB: code above converts poi column from boolean to float64.
+# don't need to convert using df = df.replace('colName':dict)
+
+#convert to numpy array for scikit-learn pacakges
+data_np = pd.DataFrame.as_matrix(df)
+# need to move 'poi' column to end to suit the range columns selections below.
+print "data_np.shape", data_np.shape #(145L, 19L)
+#for i in range(len(col_names)):
+#    print "\n", col_names[i], " = col #",i," = ", data_np[:5, i]
+
+# convert poi values from boolean to int so scikit-kearn can process.
+print type(poi[0])
+for i in range(len(poi)):
+    if poi[i]:
+        poi[i] = 1
+    else:
+        poi[i] = 0
+print "poi = ", poi
+print len(poi) #145
+#transform poi from list into numpy array one column wide.
+
+data_np_train, data_np_test, poi_train, poi_test = train_test_split(data_np, poi, test_size=0.33, random_state=42)
+
+from sklearn.ensemble import AdaBoostClassifier
+from sklearn.ensemble import RandomForestClassifier
+#http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html
+#http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html
+print "initialising AdaBoostClassifier"
 start_time = time.time()
-clf.fit(a_train, b_train)
-print("--- clf.fitting time = %s seconds ---" % (time.time() - start_time))
-print "clf.fitted, clf.predicting"
-start_time = time.time()
-clf.predict(a_test)
-b_pred = clf.predict(a_test)
-print("--- clf.predicting time = %s seconds ---" % (time.time() - start_time))
-print "b_test=", b_test
-print "b_pred=", b_pred
-print "accuracy_score=", accuracy_score(b_test, b_pred)
-print "clf.score(X, Y)=", clf.score(a_train, b_train)
+ada = AdaBoostClassifier(base_estimator = RandomForestClassifier(n_estimators = 20, criterion = 'entropy'), algorithm = 'SAMME.R')
+print("--- time to initialise AdaBoostClassifier %s seconds ---" % (time.time() - start_time))
 
+#AdaBoostClassifier : algorithm : {'SAMME', 'SAMME.R'}, optional (default='SAMME.R')
+#n_estimators : integer, optional (default=10)  The number of trees in the forest.
+#criterion : string, optional (default="gini") Supported criteria are "gini" for the Gini impurity and "entropy" for the information gain
+#algorithm
+
+
+#now fit model using data from data_np_train.
+#NBB: need to split into train and test datasets with scikit-learn package.
+
+
+print "data_np_train.shape = ", data_np_train.shape
+print "len(poi_train) = ", len(poi_train)
+start_time = time.time()
+ada.fit(data_np_train, poi_train)
+print("--- time to fit AdaBoostClassifier %s seconds ---" % (time.time() - start_time))
+
+#now predict values using the test dataset. [all rows except the last column]
+start_time = time.time()
+predictions = ada.predict(data_np_test)#needs test set here.
+print("--- time to predict AdaBoostClassifier %s seconds ---" % (time.time() - start_time))
+
+print "type(predictions)=", type(predictions)
+
+#now score the accuracy, use all rows except last column from input data, compare to last column.
+
+start_time = time.time()
+score = ada.score(data_np_test, poi_test)
+print("--- time to score AdaBoostClassifier %s seconds ---" % (time.time() - start_time))
+
+print "type(score)=", type(score)
+print 'Accuracy:', "%.2f" %(score*100)+'%'
+
+#ada = AdaBoostClassifier()#created previously
+from sklearn.metrics import confusion_matrix
+#http://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html
+
+start_time = time.time()
+cm = confusion_matrix(data_np_test[:,-1], predictions )
+print("--- time to calc confusion_matrix %s seconds ---" % (time.time() - start_time))
+print "type(cm)", type(cm)
+print "cm=", cm
+cm_normalized = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+print "type(cm_normalized)=", type(cm_normalized)
+print "cm_normalized=", cm_normalized
+print "True Positive = ", cm_normalized[0,0]
+print "False Negative = ", cm_normalized[0,1]
+print "False Positive = ", cm_normalized[1,0]
+print "True Negative = ", cm_normalized[1,1]
+#something not right as TP = FP = 1.0 & FN = TN = 0.0.
 
