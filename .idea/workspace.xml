@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a194b29a-2d02-440a-94f3-f73becff49aa" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/final_project/poi_id_AdaBoostClassifier.py" afterPath="$PROJECT_DIR$/final_project/poi_id_AdaBoostClassifier.py" />
     </list>
     <ignored path="ud120-projects.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,8 +25,8 @@
       <file leaf-file-name="poi_id_AdaBoostClassifier.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/final_project/poi_id_AdaBoostClassifier.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="535">
-              <caret line="168" column="51" selection-start-line="168" selection-start-column="51" selection-end-line="168" selection-end-column="51" />
+            <state relative-caret-position="234">
+              <caret line="146" column="41" selection-start-line="146" selection-start-column="41" selection-end-line="146" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -254,7 +253,7 @@
       <recent name="D:\2015\coding_projects\Udacity_Machine_Learning\lessons\Naive Bayes Mini-Project\github\udacityIntroMachineLearning\validation" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.adaboost_example_temp">
+  <component name="RunManager" selected="Python.poi_id_AdaBoostClassifier">
     <configuration default="false" name="poi_id_DecisionTrees" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -483,8 +482,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.adaboost_example_temp" />
-        <item index="1" class="java.lang.String" itemvalue="Python.poi_id_AdaBoostClassifier" />
+        <item index="0" class="java.lang.String" itemvalue="Python.poi_id_AdaBoostClassifier" />
+        <item index="1" class="java.lang.String" itemvalue="Python.adaboost_example_temp" />
         <item index="2" class="java.lang.String" itemvalue="Python.poi_id_KNeighborsClassifier" />
         <item index="3" class="java.lang.String" itemvalue="Python.your_algorithm" />
         <item index="4" class="java.lang.String" itemvalue="Python.poi_id_DecisionTrees" />
@@ -915,8 +914,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/final_project/poi_id_AdaBoostClassifier.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="168" column="51" selection-start-line="168" selection-start-column="51" selection-end-line="168" selection-end-column="51" />
+        <state relative-caret-position="234">
+          <caret line="146" column="41" selection-start-line="146" selection-start-column="41" selection-end-line="146" selection-end-column="41" />
           <folding />
         </state>
       </provider>
